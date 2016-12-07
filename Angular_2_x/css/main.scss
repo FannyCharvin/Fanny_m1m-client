@@ -1,0 +1,442 @@
+// Mixins
+@mixin circle-div($d) {
+  max-width:  $d;
+  max-height: $d;
+  min-width:  $d;
+  min-height: $d;
+  border-radius: $d/2;
+}
+
+// Animations
+@keyframes slide-dir{
+  from{padding-left:100vh}
+  to{padding-left:0vh}
+}
+
+// Variable
+
+//font
+@font-face {
+    font-family: 'antrasteregular';
+    src: url('antraste-webfont.woff2') format('woff2'),
+         url('antraste-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'covesbold';
+    src: url('coves_bold-webfont.woff2') format('woff2'),
+         url('coves_bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body p{
+  background-color: none;
+}
+
+
+// Styles Appareils de sortis (rederers) TOP
+.renderersMain{
+  border-style: solid;
+  border-width: 15px;
+  border-color:  #909FFF;
+  border-bottom: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 50%;
+
+  .imgBackground{
+    z-index: 900;
+    position: inherit;
+    img{
+      width: 100%;
+    }
+  }
+
+  //  Appareils de sortis (rederers) TOP Carousel
+  #carousel-Renderers{
+    text-align: center;
+    height: 100%;
+
+      .carousel-indicators{
+        bottom:10%;
+      }
+
+      .carousel-inner{
+        height:100%;
+        .img{
+          display: block;
+          margin: auto;
+          width: 130px;
+          height:125px;
+          cursor: pointer;
+          padding-top: 8vh;
+        }
+        .rendererName{
+          display: block;
+          margin: auto;
+          padding-top: 5px;
+          font-family: 'antrasteregular', sans-serif;
+          font-size: 0.7em;
+          color:  #909FFF;
+          width: 50%;
+        }
+      }
+
+      .carousel-control.right{
+        background-image: none;
+      }
+
+      .left.carousel-control{
+        background-image: none;
+      }
+
+      .carousel-indicators {
+          height: 5%;
+          top: 42vh;
+          .active {
+          width: 7px;
+          height: 7px;
+          margin-top: 0;
+          margin-bottom: 0;
+          border-width: 1px;
+          background-color: #909FFF;
+          margin-left:3px;
+          margin-right: 3px;
+          }
+          ol {
+            -webkit-padding-start: 0px;
+          }
+          li {
+          width: 7px;
+          height: 7px;
+          border-color:#909FFF;
+          border-width: 1px;
+          margin-top: 0;
+          margin-bottom: 0;
+          margin-left:3px;
+          margin-right: 3px;
+          }
+            }
+
+      .carousel-control.right{
+          display: none;
+        }
+      .left.carousel-control{
+          display: none;
+        }
+      }
+}
+
+
+// Styles Médiatheques Servers BOTTOM
+.serversMain {
+  border-style: solid;
+  border-color: #5FF6C6;
+  border-top: none;
+  border-width: 15px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-image: url(../img/input.png);
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  .server-breadcrumb{
+    display: none;
+  }
+
+      // Carousel du bas server
+      #carousel-servers{
+        text-align: center;
+        font-style: coves sans-serif;
+        top: 70px;
+
+          .carousel-inner{
+            height: auto;
+
+              .serverNameMain{
+                display: block;
+                margin: auto;
+                padding-top: 55px;
+                font-family: 'antrasteregular', sans-serif;
+                font-size: 0.7em;
+                color: #4FC4A5;
+                width: 100%;
+              }
+              .img{
+                display: block;
+                margin: auto;
+                width: 130px;
+                height:125px;
+                cursor: pointer;
+                top:10px;
+                z-index:1;
+              }
+          }
+
+            .carousel-control.right{
+                display: none;
+              }
+
+            .left.carousel-control{
+                display: none;
+              }
+
+            .carousel-indicators {
+                height: 20%;
+                top: -60px;
+                z-index:800;
+
+                  .active {
+                  width: 7px;
+                  height: 7px;
+                  margin-top: 0;
+                  margin-bottom: 0;
+                  border-width: 1px;
+                  background-color: #5FF6C6;
+                  margin-left:3px;
+                  margin-right: 3px;
+                  }
+                  ol {
+                    -webkit-padding-start: 0px;
+                  }
+                  li {
+                  width: 7px;
+                  height: 7px;
+                  border-color:#5FF6C6;
+                  border-width: 1px;
+                  margin-top: 0;
+                  margin-bottom: 0;
+                  margin-left:3px;
+                  margin-right: 3px;
+                  }
+              }
+          }
+
+
+}
+
+///// RENDERER main, contour plus petit
+.petit{
+    border-style: solid;
+    border-width: 15px;
+    border-color:  #909FFF;
+    border-bottom: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 75%;
+    transition: bottom 0.5s;
+
+    .imgBackground{
+      z-index: 900;
+      position: inherit;
+      img{
+        width: 60%;
+        transition: width 0.5s;
+      }
+    }
+
+    ///Carousel du haut en petit
+    #carousel-Renderers{
+      text-align: center;
+      font-style: coves sans-serif;
+
+        .carousel-inner{
+          height:100%;
+          background-image: url(../img/DevicesSortieSearchPetit.png);
+          background-repeat: no-repeat;
+          background-position: center;
+
+          .img{
+            opacity: 0;
+          }
+          .rendererName{
+            display: block;
+            margin: auto;
+            padding-top: 5px;
+            font-family: 'antrasteregular', sans-serif;
+            font-size: 0.7em;
+            color:  #909FFF;
+            text-transform: uppercase;
+            width: 100%;
+          }
+        }
+
+        .carousel-control.right{
+          background-image: none;
+        }
+
+        .left.carousel-control{
+          background-image: none;
+        }
+
+            .carousel-indicators {
+                height: 5%;
+                top: 18vh;
+                transition: top 0.5s;
+
+
+                  .active {
+                  width: 7px;
+                  height: 7px;
+                  margin-top: 0;
+                  margin-bottom: 0;
+                  border-width: 1px;
+                  background-color: #909FFF;
+                  margin-left:3px;
+                  margin-right: 3px;
+
+                  }
+                  ol {
+                    -webkit-padding-start: 0px;
+                  }
+                  li {
+                  width: 7px;
+                  height: 7px;
+                  border-color:#909FFF;
+                  border-width: 1px;
+                  margin-top: 0;
+                  margin-bottom: 0;
+                  margin-left:3px;
+                  margin-right: 3px;
+                  }
+            }
+
+            .carousel-control.right{
+                display: none;
+              }
+
+            .left.carousel-control{
+                display: none;
+              }
+          }
+}
+
+
+///// SERVER main, contour plus grand
+.grand{
+    border-style: solid;
+    border-color: #5FF6C6;
+    border-top: none;
+    border-width: 15px;
+    position: absolute;
+    background: none;
+    top: 25%;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    transition: top 0.5s;
+
+    .server-breadcrumb{
+      display: block;
+      position: absolute;
+      top: 28vh;
+      font-size: 1em;
+      padding-left: 1vh;
+    }
+
+      .media-server{
+        height: 73vh;
+
+          #carousel-servers{
+            display: block;
+            background-image: url(../img/inputGrand.png);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-position: top left;
+            top:0vh;
+              .carousel-indicators{
+                top:0vh;
+                z-index:800;
+                position: inherit;
+
+              }
+            .carousel-inner{
+
+              .img{
+                padding-top: 3vh;
+                z-index:1;
+              }
+              .serverName{
+                display: block;
+                margin: auto;
+                font-family: 'antrasteregular', sans-serif;
+                font-size: 0.7em;
+                color: #4FC4A5;
+                width: 100%;
+                padding-top: .5vh;
+              }
+              .serverNameMain{
+                display:none;
+              }
+            }
+          }
+      }
+}
+
+
+
+#mediasSeacrh{
+  height: 38vh;
+  margin-top: 4vh;
+  overflow: scroll;
+
+.dir,.medias{
+  animation-name: slide-dir;
+  animation-duration: .5s;
+  animation-property:(visibility, opacity);
+  font-family: 'antrasteregular', sans-serif;
+  font-size: 1.5em;
+  line-height: 10vh;
+  cursor: pointer;
+  }
+
+  td{
+    transition: all .5s;
+    font-family: 'covesbold', sans-serif;
+    font-size: .7em;
+    text-align: left;
+    padding: 1vh;
+    padding: 1vh;
+    line-height: 1.5;
+  }
+
+  tr {
+    transition: all .5s;
+    transition-property: none;
+  }
+  tr:active td{
+    background-color: lightgreen;
+    padding: 8px 0px;
+  }
+}
+
+// tests styles Alex
+section[alx-dropzone] {
+    // border: 1px solid #DDD
+}
+
+section.playing {
+    border: solid black 2px;
+}
+
+section[alx-dropzone].dropCandidate {
+    background: lightgreen;
+}
+
+section[alx-dropzone].dropCandidate.canDrop {
+    background: green;
+}
+
+.truc {
+    background: red;
+}

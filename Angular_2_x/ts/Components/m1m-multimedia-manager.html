@@ -1,0 +1,74 @@
+<section class="renderersMain" #renderersMainPetit>
+
+  <div class="imgBackground">
+      <!-- <img src="{{renderer.iconURL}}"> -->
+      <img src="img/output.png">
+  </div>
+
+
+  <!-- <h2>OUTPUTS</h2> -->
+  <div id="carousel-Renderers"
+       *ngIf="!playingRenderer"
+       class="carousel slide"
+       data-ride="carousel"
+       (swipeleft) ="rightRenderers.click()"
+       (swiperight)=" leftRenderers.click()"
+      >
+      <!-- Indicateurs -->
+      <ul class="carousel-indicators">
+          <li  *ngFor="let renderer of mediaRenderers; let first = first; let i = index" data-target="#carousel-Renderers" data-slide-to="{i}" [ngClass]="{ active: first}"></li>
+      </ul>
+
+      <!-- Slides -->
+      <div class="carousel-inner" role="listbox">
+
+
+          <div *ngFor="let renderer of mediaRenderers; let first = first" (click)="(server)"
+          class="item" [ngClass]="{ active: first}">
+
+          <!-- <m1m-media-renderer *ngFor="let renderer of mediaRenderers" [nf]="renderer">
+          </m1m-media-renderer> -->
+            <div class="rendererName">{{renderer.name}}</div>
+
+              <div class="img">
+                  <!-- <img src="{{renderer.iconURL}}"> -->
+                  <img src="img/DevicesSortieSearch.png">
+              </div>
+
+          </div>
+
+      </div>
+
+      <!-- Contrôles -->
+      <a #leftRenderers class="left carousel-control" href="#carousel-Renderers" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+      </a>
+
+      <a #rightRenderers class="right carousel-control" href="#carousel-Renderers" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+      </a>
+  </div>
+
+  <m1m-media-renderer
+      *ngIf="playingRenderer"
+      [nf]="playingRenderer"></m1m-media-renderer>
+</section>
+
+
+<div class="serversMain"  #carouselServersBordsGrands>
+
+  <!-- <h2>INPUTS</h2> -->
+
+
+  <m1m-media-browser
+      [devices]="mediaServers"
+      (on-media-select)="Play($event)"
+      (tap)="carouselServersBordsGrands.classList.add('grand')"
+      (tap)="renderersMainPetit.classList.add('petit')"
+      >
+    <!-- ici est chargé le template m1m-media-browser.html -->
+  </m1m-media-browser>
+
+</div>

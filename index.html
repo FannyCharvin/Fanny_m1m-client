@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+      content="height=device-height, width=device-width, initial-scale=1, user-scalable=no" />
+	<title>Design version : Connect to TActHab environment</title>
+	<script>
+		function load() {
+			let localhost = window.location.protocol + "//" + window.location.host;
+			let adresse = localStorage.getItem( "TActHab_adresse" ) || localhost;
+			console.log( "adresse", adresse );
+			document.querySelector("#adresse").value = adresse;
+			localStorage.setItem( "TActHab_adresse", adresse);
+		}
+		function change(evt) {
+			//console.log()
+			localStorage.setItem( "TActHab_adresse", evt.target.value);
+		}
+	</script>
+</head>
+<body onload="load()">
+	<h1>Connexion à l'environnement TActHab</h1>
+	<section>
+		<label>Adresse du serveur: </label>
+		<input id="adresse" onchange="change(event)"/>
+	</section>
+	<h2>Versions (très) basiques</h2>
+	<ul>
+		<li><a href="Vanilla_TS_JS/index.html"	>JQuery + TypeScript/EcmaScript/Javascript</a></li>
+		<li><a href="Angular_1_5_x/index.html"	>Angular 1.5</a></li>
+		<li><a href="Angular_2_x/index.html"	>Angular 2</a></li>
+	</ul>
+    <h2>Versions des étudiants de M1 MIAGE (au 4/11/2016)</h2>
+    <ul>
+        <li>
+            <h3>Notflix/</h3>
+            <p><a href="Notflix/index.html">Accès sur le Raspberry</a></p>
+            <p>L'équipe est composée de Hugo Vaillant, Aurélien Fernandes, Alexis Martinier et Luc Ortiz.</p>
+            <p>Contact: ortiz.luc9@gmail.com</p>
+            <p>Lien github: <a href="https://github.com/Hyp3ri0n/Notflix">https://github.com/Hyp3ri0n/Notflix</a></p>
+            <p>Installation en local (dans le répertoire m1m-clients:
+                <code>
+                    sudo git clone https://github.com/Hyp3ri0n/Notflix<br/>
+                    cd Notflix<br/>
+                    sudo npm install<br/>
+                    sudo gulp
+                </code>
+            </p>
+        </li>
+        <li>
+            <h3>ProjectIHM_Angular2</h3>
+            <p><a href="ProjectIHM_Angular2/index.html">Accès sur le Raspberry</a></p>
+            <p>L'équipe est composée de Lucas Mirande, Adrien Houry, Charles-Edouard Chomarat, Corentin Pauze et Jolin Fritzgerald.</p>
+            <p>Contact: lucas.mirande26@gmail.com</p>
+            <p>Lien github: <a href="https://github.com/lucasmd/ProjectIHM_Angular2">https://github.com/lucasmd/ProjectIHM_Angular2</a></p>
+            <p>Installation en local (dans le répertoire m1m-clients:
+                <code>
+                    sudo git clone https://github.com/lucasmd/ProjectIHM_Angular2<br/>
+                    cd ProjectIHM_Angular2<br/>
+                    sudo npm install<br/>
+                    sudo gulp
+                </code>
+            </p>
+        </li>
+    </ul>
+
+
+    https://github.com/Hyp3ri0n/Notflix
+</body>
+</html>

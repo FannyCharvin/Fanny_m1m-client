@@ -1,0 +1,103 @@
+<!-- le header contient un fil d'ariane ("breadcrumb") -->
+  <header >
+  </header>
+
+<section class="media-server"  >
+
+
+    <!-- Liste des serveurs  *ngIf="!ms"  -->
+    <section class="servers-list" >
+        <!-- le bloc ci-dessous est affiché autant de fois qu'il y a de serveurs -->
+
+        <div id="carousel-servers"
+             class="carousel slide"
+             data-ride="carousel"
+             (swipeleft) ="rightServer.click()"
+             (swiperight)=" leftServer.click()"
+            >
+
+            <!-- Indicateurs -->
+            <ol class="carousel-indicators">
+                <li *ngFor="let server of devices; let first = first; let i = index" data-target="#carousel-servers" data-slide-to="{i}" [ngClass]="{ active: first}"></li>
+            </ol>
+
+            <div class="server-breadcrumb">
+                <!-- Le mot "Servers" est cliquable et renvoie à la liste des servers disponibles -->
+                <!-- <span (click)="browseMediaServer(null)">
+                  Servers
+                </span> -->
+                <!-- ms.name est le nom du serveur sélectionné. Il est cliquable -->
+                <!-- <span *ngIf="ms" (click)="browseMediaServer(ms)">
+                  → {{ms.name}}
+                </span> -->
+                <!-- la balise ci-dessous liste tous les dossiers parcourus (boucle *ngfor) -->
+                <span class="glyphicon glyphicon-menu-left" (click)="browse(dir)"></span>
+
+                <!-- <span *ngFor="let dir of breadcrumb" (click)="browse(dir)">
+                   {{dir.name}}
+                </span> -->
+
+             </div>
+
+            <!-- Slides -->
+            <div class="carousel-inner" role="listbox">
+              <div *ngFor="let server of devices; let first = first" (click)="browseMediaServer(server)"
+              class="server item" [ngClass]="{ active: first}">
+                    <div class="img" ><img src="img/MediaSearch.png"></div>
+                        <!-- cette section affiche le contenu des serveurs : des dossiers (directories) ou des médias (medias) -->
+                        <section *ngIf="ms && data" >
+
+                            <div id="mediasSeacrh">
+
+                              <!-- <h3>Directories:</h3> -->
+                              <!-- ce bloc affiche tous les dossiers à chaque niveau de l'arborescence -->
+                              <p *ngFor="let dir of data.directories" (click)="browse(dir)" class="dir">
+                                  {{dir.name}}
+                              </p>
+
+                              <!-- <h3>Medias:</h3> -->
+                              <!-- Si il y a des médias l'application affiche ce tableau -->
+                              <table cellpadding="0" cellspacing="0" width="100%" class="medias">
+                                  <tr style="cursor:move" *ngFor="let media of data.medias"
+                                      [alx-draggable]="media"
+                                      (tap) = "selectMedia(media)"
+                                      >
+                                    <td class="media-title">
+                                    {{ media.title }} <br /> {{ media.creator }}
+                                    </td>
+                                    <td class="media-duration">
+                                      {{media.duration}}
+                                    </td>
+                                </tr>
+                            </table>
+                          </div>
+
+                          </section>
+
+                          <div class="serverNameMain" (click)="browse(dir)" > {{server.name }} </div>
+
+                          <span *ngIf="ms" (click)="browseMediaServer(ms)">
+
+                    <div class="serverName"> {{server.name }} </div>
+
+                        </span>
+              </div>
+            </div>
+
+            <!-- Contrôles -->
+           <a #leftServer class="left carousel-control" href="#carousel-servers" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a #rightServer class="right carousel-control" href="#carousel-servers" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+    </section>
+
+
+
+
+</section>
